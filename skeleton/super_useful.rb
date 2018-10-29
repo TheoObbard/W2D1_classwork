@@ -10,11 +10,13 @@ end
 # PHASE 3
 FRUITS = ["apple", "banana", "orange"]
 
+class CoffeeError < StandardError ;end
+
 def reaction(maybe_fruit)
   if FRUITS.include? maybe_fruit
     puts "OMG, thanks so much for the #{maybe_fruit}!"
   else 
-    raise StandardError
+    raise CoffeeError
   end 
 end
 
@@ -25,7 +27,8 @@ def feed_me_a_fruit
     puts "Feed me a fruit! (Enter the name of a fruit:)"
     maybe_fruit = gets.chomp
     reaction(maybe_fruit)
-  rescue StandardError
+  rescue CoffeeError => coff
+    puts "Saved from #{coff}."
     retry if maybe_fruit == "coffee"
   end 
 end  
@@ -35,6 +38,7 @@ class BestFriend
   def initialize(name, yrs_known, fav_pastime)
     @name = name
     @yrs_known = yrs_known
+    raise "You aint my frand" if @yrs_known < 5
     @fav_pastime = fav_pastime
   end
 
