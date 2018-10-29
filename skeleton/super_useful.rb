@@ -2,7 +2,7 @@
 def convert_to_int(str)
   begin
     Integer(str)
-  rescue
+  rescue ArgumentError
     return nil
   end
 end
@@ -14,16 +14,20 @@ def reaction(maybe_fruit)
   if FRUITS.include? maybe_fruit
     puts "OMG, thanks so much for the #{maybe_fruit}!"
   else 
-    raise StandardError 
+    raise StandardError
   end 
 end
 
 def feed_me_a_fruit
-  puts "Hello, I am a friendly monster. :)"
+  begin
+    puts "Hello, I am a friendly monster. :)"
 
-  puts "Feed me a fruit! (Enter the name of a fruit:)"
-  maybe_fruit = gets.chomp
-  reaction(maybe_fruit) 
+    puts "Feed me a fruit! (Enter the name of a fruit:)"
+    maybe_fruit = gets.chomp
+    reaction(maybe_fruit)
+  rescue StandardError
+    retry if maybe_fruit == "coffee"
+  end 
 end  
 
 # PHASE 4
