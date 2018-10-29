@@ -1,6 +1,7 @@
 class Piece
-  def initialize(type)
+  def initialize(type, start_pos)
     @type = type
+    @start_pos = start_pos
   end
 end
 
