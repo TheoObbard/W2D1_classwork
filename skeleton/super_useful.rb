@@ -36,10 +36,11 @@ end
 # PHASE 4
 class BestFriend
   def initialize(name, yrs_known, fav_pastime)
-    @name = name
     @yrs_known = yrs_known
     raise "You aint my frand" if @yrs_known < 5
     @fav_pastime = fav_pastime
+    @name = name
+    raise "Do I know you?" if fav_pastime == "" || name == ""
   end
 
   def talk_about_friendship
