@@ -1,3 +1,5 @@
+require_relative 'piece'
+
 class Board
   def initialize
     @grid = Array.new(8) { Array.new(8) }
@@ -16,4 +18,6 @@ class Board
   def display
     @grid.each { |row| p row }
   end
+  
+  
 end
